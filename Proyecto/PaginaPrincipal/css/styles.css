@@ -1,0 +1,101 @@
+
+/* Definir la fuente normal (regular) */
+@font-face {
+    font-family: 'YuGiOh-Regular';
+    src: url('assets/fonts/yu-gi-oh-matrix.ttf') format('truetype');
+}
+
+/* Definir la fuente en negrita (bold) */
+@font-face {
+    font-family: 'YuGiOh-Bold';
+    src: url('assets/fonts/yu-gi-oh-matrix-bold.ttf') format('truetype');
+}
+        /* Secciones de contenido */
+        .content-section {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+/* Aplicar la fuente a todo el cuerpo de la página */
+body {
+    font-family: 'YuGiOh-Bold', sans-serif; /* Usa la versión regular de la fuente */
+}
+
+/* Si necesitas usar la fuente en negrita en algún lugar, puedes aplicar la fuente 'YuGiOh-Bold' */
+h1, h2, h3, .bold {
+    font-family: 'YuGiOh-Bold', sans-serif;
+}
+
+/* Estilos generales para el cuerpo */
+body {
+    font-family: 'YuGiOh-Regular', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+/* Estilos para la sección de creación de carta */
+#cardCreator {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Estilos para los inputs y selects */
+#cardCreator input, #cardCreator select, #cardCreator textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilos para la vista previa de la carta */
+#cardPreview {
+    margin-top: 20px;
+}
+
+/* Estilos para el canvas donde se dibuja la carta */
+canvas {
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #6c138f;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #a04577;
+}
+
+/* Estilo específico para el nombre de la carta */
+#cardName {
+    position: 90%;
+    top: 0px;
+    left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    width: 280px; /* Aseguramos que no sobresalga */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

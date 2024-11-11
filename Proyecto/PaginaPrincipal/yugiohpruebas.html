@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Yu-Gi-Oh! - El Reino de los Duelistas</title>
+    <style>
+        /* Estilos base */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            background-image: linear-gradient(rgba(197, 48, 211, 0.308), rgba(0, 0, 0, 0.7)),
+                url('/api/placeholder/1920/1080'); /* Aquí puedes cambiar la imagen de fondo de la página */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding: 40px;
+            box-sizing: 1920px;
+            background: linear-gradient(45deg, #4a148c, #7b1fa2);
+            border-bottom: 3px solid #ffd700;
+            bottom: 1920px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            padding: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #ffd700;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 5px;
+            border: 1px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #ffd700;
+            color: #4a148c;
+            transform: scale(1.05);
+        }
+
+        /* Efecto de levantado para todos los cuadros */
+        .card, .strategy-card, .news-item, .character-card, .deck-card-mini, .video-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #ffd700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover, .strategy-card:hover, .news-item:hover, .character-card:hover, .deck-card-mini:hover, .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Sección de Noticias */
+        section#noticias {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        section#noticias h2 {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Sección de Personajes */
+        section#personajes {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .character-card h3 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+        /* Secciones de contenido */
+        .content-section {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+        /* Secciones de contenido */
+        .content-section {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        h2 {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+        /* Sección de Galería de Cartas */
+        section#galeria {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+                /* Secciones de contenido */
+                .content-section {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        h2 {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+        /* Galería de cartas */
+        .card-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Sección de Mazos Famosos */
+        section#mazos {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+        }
+
+        .deck-cards {
+                    /* Secciones de contenido */
+        .content-section {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        h2 {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+        }
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .deck-card-mini {
+            background: rgba(73, 15, 135, 0.8);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            border: 1px solid #ffd700;
+        }
+
+        /* Calendario de Eventos */
+        section#eventos {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .event-item {
+            border-left: 4px solid #ffd700;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(73, 15, 135, 0.5);
+        }
+
+        .event-date {
+            color: #ffd700;
+            font-weight: bold;
+        }
+          /* Sección de Mazos Famosos */
+          .deck-showcase {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ffd700;
+        }
+
+        .deck-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .deck-card-mini {
+            background: rgba(73, 15, 135, 0.8);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            border: 1px solid #ffd700;
+        }
+
+        /* Calendario de Eventos */
+        .calendar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+        }
+
+        .event-item {
+            border-left: 4px solid #ffd700;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(73, 15, 135, 0.5);
+        }
+
+        .event-date {
+            color: #ffd700;
+            font-weight: bold;
+        }
+         /* Noticias */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-item {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .news-item h3 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+
+        .date {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+
+        /* Sección de Videos */
+        section#videos {
+            background: rgba(73, 15, 135, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #ffd700;
+        }
+
+        .video-thumbnail {
+            background: #000;
+            height: 160px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .video-info {
+            color: #ffd700;
+        }
+
+        /* Pie de página*/
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(45deg, #4a148c, #7b1fa2);
+            border-top: 3px solid #ffd700;
+            margin-top: 30px;
+        }
+        .strategy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .strategy-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+
+        .strategy-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .strategy-card h3 {
+            color: #ffd700;
+            border-bottom: 1px solid #ffd700;
+            padding-bottom: 10px;
+        }
+        /* Sección de Mazos Famosos */
+        .deck-showcase {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ffd700;
+        }
+
+        .deck-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .deck-card-mini {
+            background: rgba(73, 15, 135, 0.8);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            border: 1px solid #ffd700;
+        }
+        /* Calendario de Eventos */
+        .calendar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+        }
+
+        .event-item {
+            border-left: 4px solid #ffd700;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(73, 15, 135, 0.5);
+        }
+
+        .event-date {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+
+               /* Efectos adicionales */
+               .glow-effect {
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+            }
+            to {
+                box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+            }
+        }
+
+        /* Mejoras responsivas */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu a {
+                width: 80%;
+                text-align: center;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sección de Inicio 🎴🎴-->
+        <header>
+            <h1>Portal Yu-Gi-Oh!</h1>
+            <h1><img src="carta2.png"  alt=""> El Reino de los Duelistas! <img src="carta2.png" alt=""></h1>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#inicio">origenes</a>
+                <a href="#personajes">Personajes</a>
+                <a href="#cartas">Cartas</a>
+                <a href="#galeria">Galería De Cartas</a>
+                <a href="#cartasLegendarias">Galería De Cartas Legendarias</a>
+                <a href="#Decks">Decks</a>
+                <a href="#reglas">Reglas</a>
+                <a href="#noticias">Noticias</a>
+                <a href="#calendario">Calendario de Eventos</a>
+                <a href="#duelos">Videos de Duelos Historicos</a>
+                <a href="#videos">Las mejores escenas de Yu-Gi-Oh!</a>
+                <a href="index.html">Generar Carta Yu-Gi-Oh!</a>
+
+            </nav>
+        </header>
+        <div class="container">
+            <!-- Sección de Bienvenida -->
+            <section id="inicio" class="content-section">
+                <h2>¡Bienvenido al Reino de los Duelistas!</h2>
+                <p>Explora el emocionante mundo de Yu-Gi-Oh!, donde los duelos definen destinos y las cartas cobran vida.</p>
+            </section>
+
+            <div class="container">
+                <!-- Sección de Bienvenida -->
+                <section id="inicio" class="content-section">
+                    <h2>Origenes</h2>
+                    <p>Yu-Gi-Oh! comenzó como un manga creado por Kazuki Takahashi en 1996, publicado en la revista Shonen Jump. El manga sigue las aventuras de un joven llamado Yūgi Mutō, quien se ve involucrado en un juego de cartas místico y peligroso. El manga fue tan popular que en 1999 se lanzó el anime, seguido de una serie de videojuegos y, por supuesto, un juego de cartas coleccionables.</p>
+                    <p>Orígenes del Juego: La historia del juego dentro del manga gira en torno al Juego de las Sombras, pero la versión real del juego de cartas fue creada por Konami en 1999.</p>
+                    <p>Evolución: Desde su lanzamiento, Yu-Gi-Oh! ha pasado por varias ediciones y actualizaciones. El juego de cartas ha crecido enormemente en popularidad y es ahora uno de los más jugados en todo el mundo, con una comunidad activa de jugadores y coleccionistas.</p>
+                </section>
+
+        <!-- Sección de Personajes -->
+        <section id="personajes">
+            <h2>Personajes</h2>
+            <div class="character-grid">
+                <div class="character-card">
+                    <h3>Yūgi Mutō</h3>
+                    <p>Yūgi Mutō es el protagonista principal de la serie, conocido por su increíble habilidad como duelista, gracias a su alter-ego Yami Yugi o "Faraon". Considerado el Rey de los Juegos y portador del Rompecabezas del Milenio. Su carta distintiva es el Mago Oscuro..</p>
+                    <img src="c:\Users\ruben\Desktop\yugimoto.jfif" alt="Yugi Muto" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="character-card">
+                    <h3>Seto Kaiba</h3>
+                    <p>Rival de Yugi y dueño de la corporación KaibaCorp. Es conocido por su odio y enemistad hacia Yugi y sus poderosos y legendarios dragones blancos de ojos azules.</p>
+                    <img src="c:\Users\ruben\Desktop\setoo.jfif" alt="Seto Kaiba" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="character-card">
+                    <h3>Joey Wheeler</h3>
+                    <p>Es el mejor amigo de Yugi Muto . Joey comienza como un duelista inexperto, pero luego se convierte en uno de los mejores duelistas del mundo. Acompaña a Yugi a lo largo de sus aventuras. Su carta característica es el Dragón Negro de Ojos Rojos.</p>
+                    <img src="c:\Users\ruben\Desktop\joey.jfif" alt="Joey Wheeler" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="character-card">
+                    <h3>Marik Ishtar</h3>
+                    <p>Líder del Clan de los Cuidadores de Tumbas y portador del Cetro del Milenio.</p>
+                    <img src="c:\Users\ruben\Desktop\joey.jfif" alt="Joey Wheeler" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="character-card">
+                    <h3>Yami Yugi</h3>
+                    <p>referido como el Faraón Sin Nombre, es el espíritu del Faraón Atem que ha sido sellado en el Rompecabezas del Milenio . Es el protagonista principal de la serie original y la segunda , junto con Yugi Muto .</p>
+                    <img src="c:\Users\ruben\Desktop\yami yugi.jfif" alt="Joey Wheeler" style="width: 100%; border-radius: 8px;">
+                </div>
+                <div class="character-card">
+                    <h3>Marik Ishtar</h3>
+                    <p>Líder del Clan de los Cuidadores de Tumbas y portador del Cetro del Milenio.</p>
+                    <img src="c:\Users\ruben\Desktop\Marik Ishtar.jfif" alt="Joey Wheeler" style="width: 100%; border-radius: 8px;">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Cartas -->
+        <section id="cartas">
+            <section id="cartas" class="content-section">
+            <h2>Cartas</h2>
+            <p>Aquí puedes aprender sobre las cartas más poderosas y populares del juego.</p>
+            <!-- Aquí puedes agregar más contenido sobre cartas o enlaces a imágenes de cartas -->
+        </section>
+                <!-- Sección de Galería -->
+                <section id="galeria">
+                    <h2>Galería de Cartas</h2>
+                    <div class="card-gallery">
+                        <div class="card">
+                            <img src="card1.jpg" alt="Carta de Dragón Rojo de Ojos Azules" class="card-img">
+                            <p>Dragón Rojo de Ojos Rojos</p>
+                        </div>
+                        <div class="card">
+                            <img src="card2.jpg" alt="Carta de Mago Oscuro" class="card-img">
+                            <p>Mago Oscuro</p>
+                        </div>
+                    </div>
+                </section>
+          <!-- Galería de Cartas -->
+          <section id="cartasLegendarias" class="content-section">
+            <h2>Galería de Cartas Legendarias</h2>
+            <div class="card-gallery">
+                <div class="card">
+                    <h3>Dragón Blanco de Ojos Azules</h3>
+                    <p>ATK: 3000 / DEF: 2500</p>
+                    <p>El legendario dragón que simboliza poder y majestuosidad</p>
+                </div>
+                <div class="card">
+                    <h3>Mago Oscuro</h3>
+                    <p>ATK: 2500 / DEF: 2100</p>
+                    <p>El más leal servidor del Faraón</p>
+                </div>
+                <div class="card">
+                    <h3>Exodia el Prohibido</h3>
+                    <p>Victoria instantánea al reunir las 5 piezas</p>
+                    <p>La carta más temida del juego</p>
+                </div>
+                <div class="card">
+                    <h3>Dragón Negro de Ojos Rojos</h3>
+                    <p>ATK: 2400 / DEF: 2000</p>
+                    <p>El feroz dragón de potencial ilimitado</p>
+                </div>
+                <div class="card">
+                    <h3>Maga Oscura</h3>
+                    <p>ATK: 2000 / DEF: 1700</p>
+                    <p>La aprendiz del Mago Oscuro</p>
+                </div>
+                <div class="card">
+                    <h3>Slifer el Dragón del Cielo</h3>
+                    <p>Carta de Dios Egipcio</p>
+                    <p>Uno de los tres dioses egipcios legendarios</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Decks -->
+        
+            <section id="Decks" class="content-section">
+                <h2>Decks Famosos</h2>
+            
+                <p>Descubre los mazos más poderosos y emblemáticos del juego.</p>
+                <div class="deck-cards">
+                <div class="deck-card-mini">Mazo de Yugi</div>
+                <div class="deck-card-mini">Mazo de Kaiba</div>
+                <div class="deck-card-mini">Mazo de Joey</div>
+                </div>
+            </section>
+
+        <!-- Sección de Reglas -->
+        <section id="reglas">
+            <section id="reglas" class="content-section">
+            <h2>Reglas del Juego</h2>
+            <p>Aquí aprenderás cómo jugar, las reglas básicas y avanzadas del juego Yu-Gi-Oh!</p>
+        
+                <!-- Sección de Reglas -->
+                    <h2>Reglas Básicas del Duelo</h2>
+                    <div class="rules-content">
+                        <h3>Formato del Duelo</h3>
+                        <p>• Cada jugador comienza con 8000 puntos de vida</p>
+                        <p>• El mazo debe contener entre 40 y 60 cartas</p>
+                        <p>• El Extra Deck puede contener hasta 15 cartas</p>
+                        <h3>Fases del Turno</h3>
+                        <p>1. Fase de Robo</p>
+                        <p>2. Fase de Espera</p>
+                        <p>3. Fase Principal 1</p>
+                        <p>4. Fase de Batalla</p>
+                        <p>5. Fase Principal 2</p>
+                        <p>6. Fase Final</p>
+                    </div>
+                </section>
+</section>
+
+        <!-- Sección de Noticias -->
+        <section id="noticias">
+            <h2>Últimas Noticias</h2>
+            <div class="news-grid">
+                <div class="news-item">
+                    <h3>¡Nuevo Set de Cartas!</h3>
+                    <p class="date">8 de Noviembre, 2024</p>
+                    <p>El nuevo set de cartas ya está disponible en tiendas. ¡No te lo pierdas!</p>
+                </div>
+                <div class="news-item">
+                    <h3>Evento Especial de Duelistas</h3>
+                    <p class="date">5 de Noviembre, 2024</p>
+                    <p>Únete al evento de duelo que se celebrará en el próximo fin de semana.</p>
+                </div>
+            </div>
+        </section>
+
+            <!-- Nueva Sección: Calendario de Eventos -->
+    <section id="calendario" class="content-section">
+        <h2>Calendario de Eventos</h2>
+        <div class="calendar">
+            <div class="event-item">
+                <span class="event-date">15 de Noviembre, 2024</span>
+                <h3>Torneo Regional - Ciudad Domino</h3>
+                <p>Gran torneo clasificatorio para el Campeonato Nacional</p>
+            </div>
+            <div class="event-item">
+                <span class="event-date">1 de Diciembre, 2024</span>
+                <h3>Lanzamiento de Nuevo Set</h3>
+                <p>Estreno mundial del set "Leyendas del Reino Antiguo"</p>
+            </div>
+                <div class="event-item">
+                <span class="event-date">20 de Diciembre, 2024</span>
+                <h3>Campeonato Nacional</h3>
+                <p>¡El evento más importante del año!</p>
+                </div>
+        </div>
+    </section>
+
+<!-- Nueva Sección: Videos de Duelos Históricos -->
+<section id="duelos" class="content-section">
+     <h2>Duelos Históricos</h2>
+     <div class="video-grid">
+        
+        <div class="video-card">
+            <h2>Yugi vs Kaiba</h2>
+            <a href="https://www.facebook.com/cartasyugiohh/videos/yugi-vs-seto-kaiba-latino/905582854268403/?locale=hi_IN">
+            <div class="video-thumbnail">
+                <img src="yami yugi.jfif" width="336" height="160" alt="" class="video-thumbnail-img">
+                
+            </div>
+            <div class="video-info">
+                <h3>Final de Battle City</h3>
+                <p>El duelo que decidió el destino del torneo</p>
+            </div>
+            </a>
+        </div>
+
+        <div class="video-card">
+            <h2>Yugi vs Marik</h2>
+            <a href="https://www.facebook.com/cartasyugiohh/videos/yugi-vs-marik-latino/1315225315856396/">
+            <div class="video-thumbnail">
+                <img src="marikvsyugi.jfif" width="336" height="160" alt="" class="video-thumbnail-img">
+                
+            </div>
+            <div class="video-info">
+                <h3>Duelo por los Dioses Egipcios</h3>
+                <p>El enfrentamiento final contra el mal</p>
+            </div>
+            </a>
+        </div>
+        <div class="video-card">
+            <h2>Joey vs Mai</h2>
+            <a href="https://www.facebook.com/cartasyugiohh/videos/joey-vs-mai-oricalcos-latino/755473409513782/">
+            <div class="video-thumbnail">
+                <img src="MaivsJoey.jfif" width="336" height="160" alt="" class="video-thumbnail-img">
+
+            </div>
+            <div class="video-info">
+                <h3>Duelo del sello de Oricalcos</h3>
+                <p>el verdadero poder de Joey</p>
+            </div>
+            </a>
+        </div>
+        </div>
+        </section>
+        <!-- Sección de Videos -->
+        <section id="videos">
+            <h2>Las mejores escenas de Yu-Gi-Oh</h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <h2>Aparicion de Exodia el Prohibido Yu-Gi-Oh</h2>
+                    <a href="https://www.youtube.com/watch?v=iEa9SMUL7Us">
+                    <div class="video-thumbnail">
+                        <img src="exodia.jfif" width="540" height="170" alt="" class="video-thumbnail-img">
+
+                    </div>
+                    <div class="video-info">
+                        <h3>Revivi uno de los mejores duelos de Yugi.</h3>
+                        <h1>Yugi invoca a Exodia el Prohibido</h1>
+                        
+                    </div>
+                    </a>
+                </div>
+                <div class="video-card">
+                    <h2>Opening de Yu-Gi-Oh</h2>
+                    <a href="https://www.youtube.com/watch?v=timXx6CBjoA">
+                    <div class="video-thumbnail">
+                    <img src="https://www.pockettactics.com/wp-content/sites/pockettactics/2023/01/yugioh-wallpaper-exodia.jpg" width="540" height="170" alt="" class="video-thumbnail-img">
+
+                    </div>
+                    <div class="video-info">
+                        <h3>El épico Opening de Yu-Gi-Oh</h3>
+                        <h1>Es hora d-d-d-del Duelo!</h1>
+                    </div>
+                </a>
+                </div>
+            </div>
+        </section>
+</div>
+        <!-- Pie de Página -->
+        <footer>
+            <p>© 2024 Portal Yu-Gi-Oh! - ¡Es Hora del Duelo!</p>
+            <p>&copy; 2024 El Reino de los Duelistas. Todos los derechos reservados.</p>
+        </footer>
+    
+</body>
+</html>
